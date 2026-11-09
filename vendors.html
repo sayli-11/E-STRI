@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Our Vendors | E-STRI</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f4f7fb;
+margin:0;
+}
+
+h1{
+text-align:center;
+background:#0077cc;
+color:white;
+padding:20px;
+}
+
+.container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:white;
+width:260px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+padding:15px;
+text-align:center;
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.card img{
+width:100%;
+height:150px;
+border-radius:10px;
+object-fit:cover;
+}
+
+.price{
+color:green;
+font-weight:bold;
+}
+
+.rating{
+color:orange;
+}
+
+button{
+background:#0077cc;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#005fa3;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Our Local Ironing Vendors</h1>
+
+<div class="container" id="vendorContainer">
+
+</div>
+
+<script>
+
+fetch("/api/vendors")
+.then(res=>{
+if(!res.ok){
+throw new Error("API not working");
+}
+return res.json();
+})
+.then(data=>{
+console.log("Vendor Data:",data);
+
+let html="";
+
+data.forEach(v=>{
+html+=`
+<div class="card">
+<img src="https://via.placeholder.com/250x150">
+<h3>${v.name}</h3>
+<p>Area: ${v.area}</p>
+<p class="price">Price: ${v.price} per cloth</p>
+<p class="rating">⭐ ${v.rating}</p>
+function bookVendor(name){
+localStorage.setItem("selectedVendor",name);
+window.location.href="index.html#booking";
+}
+</div>
+`;
+});
+
+document.getElementById("vendorContainer").innerHTML=html;
+})
+.catch(err=>{
+console.log(err);
+alert("Vendor data not loading");
+});
+
+function bookVendor(name){
+alert("Booking started with "+name);
+window.location.href="service.html";
+}
+
+</script>
+
+</body>
+</html>

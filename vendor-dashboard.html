@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vendor Dashboard</title>
+
+<style>
+body{
+font-family:Arial;
+background:#f4f7fb;
+margin:0;
+}
+
+header{
+background:#3A86FF;
+color:white;
+padding:15px;
+text-align:center;
+font-size:22px;
+}
+
+.container{
+width:90%;
+margin:auto;
+margin-top:30px;
+}
+
+.cards{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+width:200px;
+text-align:center;
+}
+
+.bookings{
+margin-top:30px;
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+button{
+background:#3A86FF;
+border:none;
+padding:8px 15px;
+color:white;
+border-radius:8px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>Vendor Dashboard</header>
+
+<div class="container">
+
+<div class="cards">
+
+<div class="card">
+<h3>Today's Orders</h3>
+<h1>12</h1>
+</div>
+
+<div class="card">
+<h3>Completed</h3>
+<h1>8</h1>
+</div>
+
+<div class="card">
+<h3>Earnings</h3>
+<h1>₹1450</h1>
+</div>
+
+<div class="card">
+<h3>Rating</h3>
+<h1>⭐4.5</h1>
+</div>
+
+</div>
+
+<div class="bookings">
+
+<h3>Recent Bookings</h3>
+
+<p>Order #101 - Ironing - Pickup Pending
+<button>Accept</button></p>
+
+<p>Order #102 - Laundry - In Progress
+<button>Update</button></p>
+
+<p>Order #103 - Dry Clean - Ready
+<button>Delivered</button></p>
+
+
+</div>
+
+</div>
+<h3>Service Availability</h3>
+
+<label>
+<input type="checkbox" checked> Ironing Available
+</label><br>
+
+<label>
+<input type="checkbox"> Laundry Available
+</label><br>
+
+<label>
+<input type="checkbox" checked> Dry Cleaning Available
+</label>
+
+<h3>Monthly Earnings</h3>
+
+<table border="1" cellpadding="8">
+<tr>
+<th>Service</th>
+<th>Orders</th>
+<th>Earnings</th>
+</tr>
+
+<tr>
+<td>Ironing</td>
+<td>45</td>
+<td>₹2250</td>
+</tr>
+
+<tr>
+<td>Laundry</td>
+<td>20</td>
+<td>₹3000</td>
+</tr>
+
+<tr>
+<td>Dry Clean</td>
+<td>12</td>
+<td>₹2400</td>
+</tr>
+
+</table>
+
+<div class="card">
+<h3>Vendor Profile</h3>
+<p>Name: Shinde Presswala</p>
+<p>Area: currey road </p>
+<p>Rating: ⭐4.5</p>
+<p>Experience: 8 Years</p>
+</div>
+
+</body>
+</html>

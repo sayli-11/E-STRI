@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-STRI | Local Ironing Services</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#f4f9ff;
+}
+
+header{
+background:#2463ea;
+color:white;
+padding:15px;
+text-align:center;
+position:sticky;
+top:0;
+}
+
+nav a{
+color:white;
+margin:0 10px;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* HERO */
+.hero{
+height:90vh;
+background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+url('i1.jpg');
+background-size:cover;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+text-align:center;
+}
+
+.hero h1{
+font-size:3rem;
+}
+
+.btn{
+margin-top:20px;
+padding:12px 25px;
+background:#19467b;
+border:none;
+color:white;
+cursor:pointer;
+border-radius:5px;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#e66a00;
+transform:scale(1.05);
+}
+
+section{
+padding:60px 20px;
+text-align:center;
+}
+
+.services,.steps{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+}
+.service-card{
+position:relative;
+width:280px;
+height:320px;
+border-radius:15px;
+overflow:hidden;
+cursor:pointer;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.service-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:0.5s;
+}
+
+.service-card:hover img{
+transform:scale(1.1);
+}
+
+.overlay{
+position:absolute;
+bottom:0;
+background:linear-gradient(transparent,rgba(0,0,0,0.8));
+color:white;
+width:100%;
+padding:20px;
+transition:0.4s;
+}
+
+.service-card:hover .overlay{
+background:rgba(0,0,0,0.85);
+}
+
+.overlay button{
+margin-top:10px;
+padding:8px 15px;
+border:none;
+background:#FF7A00;
+color:white;
+border-radius:5px;
+cursor:pointer;
+}
+
+.badge{
+background:red;
+padding:3px 8px;
+border-radius:5px;
+font-size:12px;
+margin-left:10px;
+}
+
+.time{
+background:#3A86FF;
+padding:3px 8px;
+border-radius:5px;
+font-size:12px;
+margin-left:10px;
+}
+
+.card{
+background:white;
+padding:20px;
+width:250px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card i{
+font-size:30px;
+color:#0077cc;
+margin-bottom:10px;
+}
+
+/* INFO SECTION */
+.info-section{
+background:white;
+}
+
+.info-container{
+display:flex;
+flex-wrap:wrap;
+align-items:center;
+justify-content:center;
+gap:40px;
+max-width:1100px;
+margin:auto;
+}
+
+.info-image img{
+width:420px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.info-text{
+max-width:500px;
+text-align:left;
+}
+
+.info-text h2{
+color:#0077cc;
+margin-bottom:15px;
+}
+
+/* WHY SECTION */
+.why{
+background:#f4f9ff;
+}
+
+.why-container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
+margin-top:30px;
+}
+
+.why-box{
+background:white;
+padding:25px;
+width:220px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.why-box:hover{
+transform:translateY(-8px);
+}
+
+.why-box i{
+font-size:28px;
+color:#0077cc;
+margin-bottom:10px;
+}
+
+/* FORM */
+form{
+max-width:400px;
+margin:auto;
+display:flex;
+flex-direction:column;
+}
+
+input{
+margin:10px 0;
+padding:10px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+footer{
+background:#0077cc;
+color:white;
+padding:20px;
+margin-top:20px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+.hero h1{
+font-size:2rem;
+}
+
+.services,.steps{
+flex-direction:column;
+align-items:center;
+}
+
+.info-container{
+flex-direction:column;
+text-align:center;
+}
+
+.info-text{
+text-align:center;
+}
+
+}
+.logo-container{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+}
+
+.logo{
+width:50px;
+height:50px;
+border-radius:50%;
+}
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px 40px;
+}
+
+.logo-section{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.menu a{
+margin-left:25px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.menu a:hover{
+color:#FFD166;
+}
+
+.logo{
+width:45px;
+height:45px;
+cursor:pointer;
+}
+.menu a{
+position:relative;
+}
+
+.menu a::after{
+content:'';
+position:absolute;
+width:0;
+height:2px;
+background:white;
+left:0;
+bottom:-5px;
+transition:0.3s;
+}
+
+.menu a:hover::after{
+width:100%;
+}
+#chatbot-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#3A86FF;
+color:white;
+font-size:25px;
+padding:15px;
+border-radius:50%;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+#chatbot-box{
+position:fixed;
+bottom:80px;
+right:20px;
+width:300px;
+background:white;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+display:none;
+flex-direction:column;
+overflow:hidden;
+}
+
+#chat-header{
+background:#3A86FF;
+color:white;
+padding:10px;
+display:flex;
+justify-content:space-between;
+}
+
+#chat-messages{
+height:250px;
+padding:10px;
+overflow-y:auto;
+font-size:14px;
+}
+
+#chat-input-area{
+display:flex;
+border-top:1px solid #ccc;
+}
+
+#chat-input-area input{
+flex:1;
+padding:8px;
+border:none;
+}
+
+#chat-input-area button{
+background:#3A86FF;
+color:white;
+border:none;
+padding:8px;
+}
+/* ================= AI PRICE PREDICTOR ================= */
+
+#ai-predictor{
+    background:#eef6ff;
+    text-align:center;
+}
+
+#ai-predictor h2{
+    color:#2463ea;
+    margin-bottom:10px;
+}
+
+.ai-box{
+    background:white;
+    max-width:450px;
+    margin:30px auto;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.12);
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    text-align:left;
+}
+
+.ai-box label{
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.ai-box input,
+.ai-box select{
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:7px;
+    font-size:15px;
+}
+
+.ai-box button{
+    margin-top:15px;
+}
+
+#aiResult{
+    margin-top:20px;
+    padding:15px;
+    border-radius:10px;
+    background:#f4f9ff;
+    text-align:center;
+    font-size:18px;
+    font-weight:bold;
+    color:#2463ea;
+    display:none;
+}
+
+/* ====================================================== */
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="navbar">
+
+<div class="logo-section">
+<a href="index.html">
+<img src="logo.png" class="logo">
+</a>
+<h2>E-STRI</h2>
+</div>
+<nav class="menu">
+<a href="#home">Home</a>
+<a href="services.html">Services</a>
+<a href="#steps">How It Works</a>
+<a href="#booking">Book</a>
+<a href="#contact">Contact</a>
+</nav>
+</div>
+</header>
+
+<section class="hero" id="home">
+<h1>Your Local Presswala, Now Online</h1>
+<button class="btn" onclick="scrollToSection('booking')">Book Now</button>
+</section>
+
+<section id="services">
+<h2>Our Services</h2>
+
+<div class="services">
+
+<div class="service-card" onclick="openService('ironing')">
+<img src="i4.jpg">
+<div class="overlay">
+<h3>Ironing</h3>
+<button>Select</button>
+</div>
+</div>
+
+<div class="service-card" onclick="openService('dryclean')">
+<img src="i5.jpg">
+<div class="overlay">
+<h3>Dry Cleaning</h3>
+<button>Select</button>
+</div>
+</div>
+
+<div class="service-card" onclick="openService('laundry')">
+<img src="i8.jpg">
+<div class="overlay">
+<h3>Laundry</h3>
+<button>Select</button>
+</div>
+</div>
+
+<div class="service-card" onclick="openService('shoe')">
+<img src="i7.jpg">
+<div class="overlay">
+<h3>Shoe Cleaning</h3>
+<button>Select</button>
+</div>
+</div>
+
+<div class="service-card" onclick="openService('curtain')">
+<img src="i6.jpg">
+<div class="overlay">
+<h3>Curtain Cleaning</h3>
+<button>Select</button>
+</div>
+</div>
+
+</div>
+</section>
+</div>
+</section>
+
+<section class="info-section">
+<div class="info-container">
+
+<div class="info-image">
+<img src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1">
+</div>
+
+<div class="info-text">
+<h2>Empowering Local Vendors</h2>
+<p>E-STRI helps local ironing vendors get digital customers and stable income.</p>
+<p>Customers can easily book services and support small businesses.</p>
+</div>
+
+</div>
+</section>
+
+<section class="why">
+<h2>Why Choose E-STRI?</h2>
+
+<div class="why-container">
+
+<div class="why-box">
+<i class="fas fa-rupee-sign"></i>
+<h3>Affordable</h3>
+<p>Lower cost than big laundry chains.</p>
+</div>
+
+<div class="why-box">
+<i class="fas fa-users"></i>
+<h3>Support Local</h3>
+<p>Your booking increases vendor income.</p>
+</div>
+
+<div class="why-box">
+<i class="fas fa-leaf"></i>
+<h3>Eco Friendly</h3>
+<p>Traditional ironing saves electricity.</p>
+</div>
+
+<div class="why-box">
+<i class="fas fa-clock"></i>
+<h3>Fast Service</h3>
+<p>Quick pickup and delivery.</p>
+</div>
+
+</div>
+</section>
+
+<section id="steps">
+<h2>How It Works</h2>
+<div class="steps">
+<div class="card"><i class="fas fa-calendar-check"></i><h3>Book</h3></div>
+<div class="card"><i class="fas fa-truck"></i><h3>Pickup</h3></div>
+<div class="card"><i class="fas fa-fire"></i><h3>Ironing</h3></div>
+<div class="card"><i class="fas fa-home"></i><h3>Delivery</h3></div>
+</div>
+</section>
+
+<section id="booking">
+<h3 id="selectedService"></h3>
+<h4 id="selectedVendor"></h4>
+
+<form onsubmit="handleSubmit(event)">
+<input type="text" placeholder="Your Name" required>
+<input type="tel" placeholder="Phone Number" required>
+<input type="text" placeholder="Address" required>
+
+<input type="number" placeholder="Number of Clothes" required>
+
+<label>Select Pickup Date:</label>
+<input type="date" required>
+
+<label>Select Time Slot:</label>
+<select required>
+<option>Morning (9am - 12pm)</option>
+<option>Afternoon (12pm - 4pm)</option>
+<option>Evening (4pm - 8pm)</option>
+</select>
+
+<button class="btn">Confirm Booking</button>
+</form>
+</section>
+
+<!-- ================= AI PRICE PREDICTOR ================= -->
+
+<section id="ai-predictor">
+
+    <h2>🤖 E-STRI AI Price Predictor</h2>
+
+    <p>
+        Get an estimated service price using our trained
+        Machine Learning model.
+    </p>
+
+    <div class="ai-box">
+
+        <label>Choose Service</label>
+
+        <select id="aiService">
+            <option value="ironing">Ironing</option>
+            <option value="dryclean">Dry Cleaning</option>
+            <option value="laundry">Laundry</option>
+            <option value="curtain">Curtain Cleaning</option>
+            <option value="shoe">Shoe Cleaning</option>
+        </select>
+
+
+        <label>Number of Clothes</label>
+
+        <input
+            type="number"
+            id="aiClothes"
+            min="1"
+            placeholder="Enter number of clothes"
+        >
+
+
+        <label>Urgency</label>
+
+        <select id="aiUrgency">
+
+            <option value="normal">
+                Normal
+            </option>
+
+            <option value="urgent">
+                Urgent
+            </option>
+
+        </select>
+
+
+        <button
+            type="button"
+            class="btn"
+            onclick="predictPrice()"
+        >
+            Predict Price
+        </button>
+
+
+        <div id="aiResult"></div>
+
+    </div>
+
+</section>
+
+<!-- ====================================================== -->
+<section id="contact">
+<h2>Contact Us</h2>
+<p>Email: support@estri.com</p>
+<p>Phone: +91 8879542340</p>
+</section>
+
+<footer>
+<p>© 2026 E-STRI | Digital Platform to Empower Local Ironing Vendors</p>
+</footer>
+
+<script>
+    window.onload = function(){
+    let service = localStorage.getItem("selectedService");
+    let vendor = localStorage.getItem("selectedVendor");
+
+    if(service){
+        document.getElementById("selectedService").innerText =
+        "Selected Service: " + service.toUpperCase();
+    }
+
+    if(vendor){
+        document.getElementById("selectedVendor").innerText =
+        "Selected Vendor: " + vendor;
+    }
+}
+
+function handleSubmit(e){
+    e.preventDefault();
+
+    const service = localStorage.getItem('selectedService') || 'Ironing';
+
+    const data = {
+    name: e.target[0].value,
+    phone: e.target[1].value,
+    address: e.target[2].value,
+    numberOfClothes: Number(e.target[3].value),
+    pickupDate: e.target[4].value,
+    timeSlot: e.target[5].value,
+    service: service
+};
+
+    fetch('http://localhost:5000/api/book', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(response => {
+        alert(response.message);
+        e.target.reset();
+    })
+    .catch(err => {
+        console.error(err);
+        alert('Something went wrong!');
+    });
+}
+function toggleChat(){
+let box = document.getElementById("chatbot-box");
+box.style.display = box.style.display==="flex" ? "none" : "flex";
+}
+
+async function sendMessage(){
+
+    let input = document.getElementById("userInput");
+    let msg = input.value.trim();
+
+    if (!msg) return;
+
+    let chat = document.getElementById("chat-messages");
+
+    // Show user message
+    chat.innerHTML += `<p><b>You:</b> ${msg}</p>`;
+
+    input.value = "";
+
+    // Show thinking message
+    chat.innerHTML += `<p id="ai-thinking"><b>E-STRI AI:</b> Thinking...</p>`;
+
+    chat.scrollTop = chat.scrollHeight;
+
+    try {
+
+        const response = await fetch("http://localhost:5001/api/ai/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message: msg
+            })
+        });
+
+        const data = await response.json();
+
+        // Remove thinking message
+        const thinking = document.getElementById("ai-thinking");
+        if (thinking) {
+            thinking.remove();
+        }
+
+        if (data.success) {
+
+            chat.innerHTML += `
+                <p>
+                    <b>E-STRI AI:</b> ${data.reply}
+                </p>
+            `;
+
+        } else {
+
+            chat.innerHTML += `
+                <p>
+                    <b>E-STRI AI:</b> Sorry, I couldn't process that.
+                </p>
+            `;
+        }
+
+    } catch (error) {
+
+        console.error("Chatbot Error:", error);
+
+        const thinking = document.getElementById("ai-thinking");
+        if (thinking) {
+            thinking.remove();
+        }
+
+        chat.innerHTML += `
+            <p>
+                <b>E-STRI AI:</b> Unable to connect to the AI server.
+            </p>
+        `;
+    }
+
+    chat.scrollTop = chat.scrollHeight;
+}{
+
+let input = document.getElementById("userInput");
+let msg = input.value.toLowerCase().trim();
+
+let chat = document.getElementById("chat-messages");
+
+chat.innerHTML += `<p><b>You:</b> ${msg}</p>`;
+
+let reply = "";
+
+/* GREETING */
+
+if(msg.includes("hi") || msg.includes("hello") || msg.includes("hey")){
+reply = "Hello 👋 Welcome to E-STRI. How can I help you?";
+}
+
+/* PRICE */
+
+else if(msg.includes("price") || msg.includes("cost") || msg.includes("rate")){
+reply = "Ironing starts from ₹5 per cloth. Laundry and dry clean prices depend on vendor.";
+}
+
+/* BOOKING */
+
+else if(msg.includes("how to book any services") || msg.includes("booking") || msg.includes("order")){
+reply = "To book service go to Booking section on homepage and fill the form.";
+}
+
+/* VENDOR */
+
+else if(msg.includes("vendor") || msg.includes("presswala")){
+reply = "Click any service like Ironing or Laundry to see available vendors.";
+}
+
+/* DELIVERY */
+
+else if(msg.includes("you provide home delivery") || msg.includes("pickup")){
+reply = "Yes 😊 We provide free pickup and delivery from nearby vendors.";
+}
+
+/* SERVICES */
+
+else if(msg.includes("what type of services you provide??") || msg.includes("what do you do")){
+reply = "We provide Ironing, Laundry, Dry Cleaning, Shoe Cleaning and Curtain Cleaning.";
+}
+
+/* DEFAULT */
+
+else{
+reply = "Sorry 😅 I didn't understand. Try asking about price, booking, delivery or vendors.";
+}
+
+chat.innerHTML += `<p><b>Bot:</b> ${reply}</p>`;
+
+input.value="";
+chat.scrollTop = chat.scrollHeight;
+}
+</script>
+<script>
+function openService(service){
+localStorage.setItem("selectedService",service);
+window.location.href="service-detail.html";
+}
+</script>
+<script>
+
+// ================= AI PRICE PREDICTION =================
+
+async function predictPrice(){
+
+    const service =
+        document.getElementById("aiService").value;
+
+    const numberOfClothes =
+        document.getElementById("aiClothes").value;
+
+    const urgency =
+        document.getElementById("aiUrgency").value;
+
+    const result =
+        document.getElementById("aiResult");
+
+
+    // Check number of clothes
+
+    if(!numberOfClothes || numberOfClothes < 1){
+
+        result.style.display = "block";
+
+        result.innerHTML =
+            "⚠️ Please enter the number of clothes.";
+
+        return;
+    }
+
+
+    result.style.display = "block";
+
+    result.innerHTML =
+        "🤖 AI is calculating your estimated price...";
+
+
+    try{
+
+        const response = await fetch(
+            "http://localhost:5000/api/ai/predict-price",
+            {
+                method:"POST",
+
+                headers:{
+                    "Content-Type":"application/json"
+                },
+
+                body:JSON.stringify({
+
+                    numberOfClothes:
+                        Number(numberOfClothes),
+
+                    service:
+                        service,
+
+                    urgency:
+                        urgency
+
+                })
+            }
+        );
+
+
+        const data = await response.json();
+
+
+        if(data.success){
+
+            result.innerHTML =
+                "🤖 AI Estimated Price: ₹"
+                + data.predictedPrice;
+
+        }else{
+
+            result.innerHTML =
+                "⚠️ Unable to predict price.";
+
+        }
+
+    }catch(error){
+
+        console.error(error);
+
+        result.innerHTML =
+            "❌ AI server is not available.";
+
+    }
+
+}
+
+// =======================================================
+
+</script>
+<!-- CHATBOT BUTTON -->
+
+<div id="chatbot-btn" onclick="toggleChat()">💬</div>
+
+<!-- CHATBOT BOX -->
+
+<div id="chatbot-box">
+
+<div id="chat-header">
+E-STRI Assistant
+<span onclick="toggleChat()">❌</span>
+</div>
+
+<div id="chat-messages"></div>
+
+<div id="chat-input-area">
+<input type="text" id="userInput" placeholder="Ask something...">
+<button onclick="sendMessage()">Send</button>
+</div>
+
+</div>
+</body>
+</html>

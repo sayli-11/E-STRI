@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel | E-STRI</title>
+<style>
+body{font-family:Arial;background:#f4f9ff;margin:0}
+h1{text-align:center;background:#0077cc;color:white;padding:15px}
+table{width:90%;margin:30px auto;border-collapse:collapse;background:white}
+th,td{padding:12px;border:1px solid #ddd;text-align:center}
+th{background:#0077cc;color:white}
+</style>
+</head>
+
+<body>
+
+<h1>All Bookings</h1>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Phone</th>
+<th>Address</th>
+<th>Clothes</th>
+<th>Service</th>
+<th>Date</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="data"></tbody>
+</table>
+
+<script>
+fetch('http://localhost:5000/api/bookings')
+.then(res=>res.json())
+.then(data=>{
+    let rows="";
+    data.forEach(b=>{
+        rows+=`
+<tr>
+<td>${b.name}</td>
+<td>${b.phone}</td>
+<td>${b.address}</td>
+<td>${b.numberOfClothes}</td>
+<td>${b.service}</td>
+<td>${new Date(b.date).toLocaleString()}</td>
+<td><button onclick="deleteBooking('${b._id}')">Delete</button></td>
+</tr>`;
+    });
+    document.getElementById('data').innerHTML=rows;
+});
+function deleteBooking(id){
+    fetch('http://localhost:5000/api/bookings/'+id,{
+        method:'DELETE'
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        alert(data.message);
+        location.reload();
+    });
+}
+</script>
+
+</body>
+</html>

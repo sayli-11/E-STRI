@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vendor Map | E-STRI</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<style>
+body{margin:0;font-family:Arial}
+h2{text-align:center;background:#0077cc;color:white;padding:15px}
+#map{height:90vh}
+</style>
+
+</head>
+
+<body>
+
+<h2>Nearby Vendors Map</h2>
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+
+if(navigator.geolocation){
+
+navigator.geolocation.getCurrentPosition(function(position){
+
+const userLat = position.coords.latitude;
+const userLng = position.coords.longitude;
+
+const map = L.map('map').setView([userLat,userLng],14);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+maxZoom:19
+}).addTo(map);
+
+// USER MARKER
+L.marker([userLat,userLng])
+.addTo(map)
+.bindPopup("You are here")
+.openPopup();
+
+// SAMPLE VENDORS NEARBY
+const vendors = [
+{ name:"Ramesh Presswala",lat:userLat+0.005,lng:userLng+0.004 },
+{ name:"Salim Iron Center",lat:userLat-0.004,lng:userLng-0.003 },
+{ name:"Ganesh Laundry",lat:userLat+0.003,lng:userLng-0.005 },
+{ name:"Shiv Iron Works",lat:userLat-0.002,lng:userLng+0.006 }
+];
+
+vendors.forEach(v=>{
+L.marker([v.lat,v.lng])
+.addTo(map)
+.bindPopup(v.name);
+});
+
+});
+
+}else{
+alert("Location not supported");
+}
+
+</script>
+
+</body>
+</html>

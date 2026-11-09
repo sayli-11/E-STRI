@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Our Services | E-STRI</title>
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f4f9ff;
+}
+
+/* HEADER */
+header{
+    background:#0077cc;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+/* SERVICE CARDS */
+.services{
+    display:flex;
+    flex-wrap:wrap;
+    gap:30px;
+    justify-content:center;
+    padding:40px;
+}
+
+.card{
+    background:white;
+    width:280px;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    text-align:center;
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    border-radius:10px;
+}
+
+/* VENDOR SECTION */
+#vendorSection{
+    display:none;
+    padding:40px;
+}
+
+#vendorSection h2{
+    text-align:center;
+    color:#0077cc;
+    margin-bottom:20px;
+}
+
+/* VENDOR TABLE */
+table{
+    width:80%;
+    margin:auto;
+    border-collapse:collapse;
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+table th, table td{
+    padding:12px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+
+table th{
+    background:#0077cc;
+    color:white;
+}
+
+table tr:hover{
+    background:#f1f1f1;
+}
+
+/* BOOK BUTTON */
+button{
+    padding:8px 15px;
+    background:#0077cc;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#005f99;
+}
+
+/* GO BACK BUTTON */
+#goBack{
+    display:block;
+    margin:40px auto;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .services{
+        flex-direction:column;
+        align-items:center;
+    }
+    table{
+        width:100%;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Our Services</h1>
+</header>
+
+<div class="services">
+    <div class="card" onclick="showVendors('ironing')">
+        <img src="i4.jpg">
+        <h3>Regular Ironing</h3>
+        <p>₹5 – ₹10 per cloth</p>
+    </div>
+
+    <div class="card" onclick="showVendors('express')">
+        <img src="i5.jpg">
+        <h3>Dry cleaning</h3>
+        <p>Same day delivery</p>
+    </div>
+
+    <div class="card" onclick="showVendors('subscription')">
+        <img src="i6.jpg">
+        <h3>Curtaincleaning</h3>
+        <p>Curtain cleaning services</p>
+    </div>
+</div>
+
+<!-- VENDOR SECTION -->
+<div id="vendorSection">
+    <h2 id="serviceTitle"></h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Vendor Name</th>
+                <th>Location</th>
+                <th>Price</th>
+                <th>Rating</th>
+                <th>Book</th>
+            </tr>
+        </thead>
+        <tbody id="vendorTable"></tbody>
+    </table>
+</div>
+
+<button id="goBack" onclick="scrollToTop()">Go Back Home</button>
+
+<script>
+// SCROLL TO VENDOR SECTION AND SHOW TABLE
+function showVendors(service){
+    const vendorSection = document.getElementById("vendorSection");
+    const title = document.getElementById("serviceTitle");
+    const table = document.getElementById("vendorTable");
+
+    vendorSection.style.display="block";
+
+    if(service=="ironing"){
+        title.innerText="Ironing Service Vendors";
+        table.innerHTML=`
+        <tr>
+            <td>Ramesh Presswala</td>
+            <td>Andheri</td>
+            <td>₹6-20</td>
+            <td>⭐4.5</td>
+            <td><button onclick="goToBooking('Ironing')">Book</button></td>
+        </tr>
+        <tr>
+            <td>Salim Iron Center</td>
+            <td>Bandra</td>
+            <td>₹7-20</td>
+            <td>⭐4.2</td>
+            <td><button onclick="goToBooking('Ironing')">Book</button></td>
+        </tr>`;
+    } else if(service=="express"){
+        title.innerText="Express Service Vendors";
+        table.innerHTML=`
+        <tr>
+            <td>Ganesh Laundry</td>
+            <td>Dadar</td>
+            <td>₹10</td>
+            <td>⭐4.7</td>
+            <td><button onclick="goToBooking('Dry cleaning')">Book</button></td>
+        </tr>`;
+    } else {
+        title.innerText="curtain cleaning Vendors";
+        table.innerHTML=`
+        <tr>
+            <td>Shiv Iron Works</td>
+            <td>Kurla</td>
+            <td>₹120-300</td>
+            <td>⭐4.3</td>
+            <td><button onclick="goToBooking('curtain cleaning')">Book</button></td>
+        </tr>`;
+    }
+
+    // Scroll smoothly to vendor section
+    vendorSection.scrollIntoView({behavior:"smooth"});
+}
+
+// GO BACK TOP
+function scrollToTop(){
+    window.scrollTo({top:0, behavior:'smooth'});
+}
+function goToBooking(serviceName){
+    // Save selected service in browser memory
+    localStorage.setItem('selectedService', serviceName);
+    // Redirect to index.html booking section
+    window.location.href = 'index.html#booking';
+}
+</script>
+
+</body>
+</html>
